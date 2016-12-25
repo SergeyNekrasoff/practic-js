@@ -405,10 +405,10 @@ console.log('=======================');
 //     this.name = name;
 //   }
 
-  sayName() {
-    alert(`Person ${this.name} said his name`);
-  }
-}
+//   sayName() {
+//     alert(`Person ${this.name} said his name`);
+//   }
+// }
 
-const john = new Person('John');
-john.sayName();
+// const john = new Person('John');
+// john.sayName();

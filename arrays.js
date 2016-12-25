@@ -858,3 +858,25 @@ console.log('------');
 
 // quickSort(arr);
 // console.log(quickSort(arr));
+
+var reduce = function(arr, callback, startValue) {
+  var i, length = arr.length, result = startValue;
+  for (i = 0; i < length; i++) {
+    result = callback.call(null, result, arr[i], i, arr);
+  }
+  return result;
+}
+
+var arrs = [[1, 2, 3], [4, 5], [6], [7, 8], [9, 10, 11]];
+var strs = ['JavaScript', 'is', 'awesome'];
+
+var strResults = reduce(strs, function(phrase, word, index) {
+  return (index === 0) ? phrase + word : phrase + ' ' + word;
+}, '');
+
+var arrResults = reduce(arrs, function(result, current) {
+  return result.concat(current);
+}, []);
+
+console.log(strResults);
+console.log(arrResults);
