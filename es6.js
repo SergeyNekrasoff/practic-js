@@ -18,5 +18,63 @@ class Person {
   }
 }
 
+// extends
+// расширение класса
+
+class GreatPerson {
+  constructor(name, phrase) {
+    // вызов конструктора-родителя constructor(name)
+    // всё что делает super при вызове внутри конструктора (св-ва constructor)
+    // вызывает конструктор родителя и записывает текущий объект
+    // (т.е. в this) всё, что от него требуется
+    super(name);
+    this.phrase = phrase;
+  }
+  sayPhrase() {
+    console.log(`${this.name} says: "${this.phrase}"`)
+  }
+}
+
 const john = new Person('John');
-john.sayName();
+
+john.sayName(); // Person Jane said his name
+john.sayPhrase(); // Jane says: "Hello, World!"
+
+// super
+
+// Подводный камень: при реализации наследования с помощью
+// extends и работе с дочерним конструктором необходимо
+// вызвать super() перед добавлением любого нового свойства
+class GreatPerson extends Person {
+  constructor(name, phrase) {
+    // сначала super()
+    super(name);
+    // потом записи собственных свойств
+    this.phrase = phrase;
+  }
+}
+
+// Classes without Constructors
+// Если не указать явно в конструкторе что нужно сделать,
+// оно и так запишется
+
+// Static
+class Person {
+  // служебная функция, записанная через Static
+  // благополучно переносятся на конструктор потомка
+  static sos() {
+    console.log('I really need help!');
+  }
+}
+
+class Artist extends Person {
+  draw(art) {
+    console.log(`Artist has just drawn ${art}`);
+  }
+}
+
+const artist = new Artist();
+
+Person.sos(); // I really need help!
+Artist.sos(); // I really need help!
+artist.sos(); // artist.sos is not a function
