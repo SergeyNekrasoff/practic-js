@@ -859,24 +859,43 @@ console.log('------');
 // quickSort(arr);
 // console.log(quickSort(arr));
 
-var reduce = function(arr, callback, startValue) {
-  var i, length = arr.length, result = startValue;
-  for (i = 0; i < length; i++) {
-    result = callback.call(null, result, arr[i], i, arr);
-  }
-  return result;
-}
 
-var arrs = [[1, 2, 3], [4, 5], [6], [7, 8], [9, 10, 11]];
-var strs = ['JavaScript', 'is', 'awesome'];
-
-var strResults = reduce(strs, function(phrase, word, index) {
-  return (index === 0) ? phrase + word : phrase + ' ' + word;
-}, '');
-
-var arrResults = reduce(arrs, function(result, current) {
-  return result.concat(current);
-}, []);
-
-console.log(strResults);
-console.log(arrResults);
+// продвинутое использование метода reduce()
+// var selected = [
+//   { price: 60 },
+//   { price: 120 }
+// ];
+//
+// var dollar_const = 60.08;
+// var euro_const = 63.54;
+//
+// var reducers = {
+//   rubles: function(state, item) {
+//     return state.rubles += item.price;
+//   },
+//   dollars: function(state, item) {
+//     return state.dollars += item.price / dollar_const;
+//   },
+//   euros: function(state, item) {
+//     return state.euros += item.price / euro_const;
+//   }
+// };
+//
+// var combineReducers = function(reducers) {
+//   return function(state, item) {
+//     return Object.keys(reducers).reduce(function(nextState, key) {
+//       reducers[key](state, item);
+//       return state;
+//     }, {});
+//   }
+// };
+//
+// var priceReducer = combineReducers(reducers);
+//
+// var totalPrice = selected.reduce(priceReducer, {
+//   rubles: 0,
+//   dollars: 0,
+//   euros: 0
+// });
+//
+// console.log(totalPrice);

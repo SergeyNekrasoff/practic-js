@@ -412,3 +412,8 @@ console.log('=======================');
 
 // const john = new Person('John');
 // john.sayName();
+
+const up = (str) => str.toUpperCase();
+let str = `this is ${up('string')} in uppercase`;
+
+console.log(str);

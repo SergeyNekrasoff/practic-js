@@ -78,3 +78,24 @@ const artist = new Artist();
 Person.sos(); // I really need help!
 Artist.sos(); // I really need help!
 artist.sos(); // artist.sos is not a function
+
+
+// свойство super()
+const logger = {
+  log() {
+    console.log('Hello, World from logger!');
+  }
+};
+
+const child = {
+  log() {
+    super.log();
+    console.log('Hello, World from child!');
+  }
+};
+
+Object.setPrototypeOf(child, logger);
+child.log();
+
+// "Hello, World from logger!"
+// "Hello, World from child!"
