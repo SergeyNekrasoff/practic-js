@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  
+<p class="js-initial-string">Python</p>
+<div>
+  <input type="text" class="js-input">
+</div>
+<button class="js-check">Add!</button>
+<p>Result: <span class="js-result"></span></p>
+
+<script type="text/javascript">
+  document.querySelector('.js-check').addEventListener('click', checkInput);
+
+  function checkInput(initStr, addStr) {
+    addStr = document.querySelector('.js-input').value;
+    initStr = document.querySelector('.js-initial-string').innerHTML.toString().toLowerCase();
+
+    var $result = document.querySelector('.js-result');
+    var $frontStr = addStr.toString().split('').slice(0, 2).join('').toLowerCase();
+    var $newComplex = initStr.split('');
+    var $firstTwoSym = $newComplex.slice(0, 2).join('');
+
+    if ($firstTwoSym === $frontStr) {
+      $result.innerHTML = initStr;
+    } else {
+      $newComplex.unshift($frontStr);
+      $result.innerHTML = $newComplex.join('');
+    }
+  }
+</script>
+</body>
+</html>
