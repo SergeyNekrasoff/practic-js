@@ -7,11 +7,11 @@
 </head>
 <body>
 
-  <p class="js-initial-string">String</p>
+  <p class="js-initial-string">Board</p>
   <div>
     <input type="text" class="js-input">
   </div>
-  <button class="js-check">Remove!</button>
+  <button class="js-check">Remove character by number</button>
   <p>Result: <span class="js-result"></span></p>
 
 <script type="text/javascript">
@@ -22,7 +22,6 @@ function checkInput(initStr, indxSymb) {
   initStr = document.querySelector('.js-initial-string').innerHTML.toString().toLowerCase();
 
   var $result = document.querySelector('.js-result');
-  var $newComplex = initStr.split('');
   var newString = '';
 
   indxSymb = parseInt(indxSymb);
@@ -30,13 +29,13 @@ function checkInput(initStr, indxSymb) {
   if (indxSymb === null || indxSymb === 0 || isNaN(indxSymb)) {
     $result.innerHTML = 'Please enter a number';
   } else {
-    newString = $newComplex.splice(indxSymb, 1);
-
-
-
-    console.log('newString: ' + newString);
-    console.log('indxSymb: ' + indxSymb);
+    newString = initStr.replaceAt(indxSymb, ' ');
+    $result.innerHTML = newString.replace(' ', '');
   }
+}
+
+String.prototype.replaceAt = function(index, replacement) {
+  return this.substr(0, index - 1) + replacement + this.substr((index - 1) + replacement.length);
 }
 </script>
 </body>
