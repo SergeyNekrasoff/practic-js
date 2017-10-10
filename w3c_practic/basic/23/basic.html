@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>23</title>
+</head>
+<body>
+
+  <p class="js-initial-string">Close</p>
+  <button class="js-change">Change out last symbols on "$"</button>
+
+<script type="text/javascript">
+document.querySelector('.js-change').addEventListener('click', change);
+
+function change(initStr) {
+  initStr = document.querySelector('.js-initial-string').innerHTML.toString().toLowerCase();
+  var $splitStr = initStr.split('');
+  var $result = document.querySelector('.js-result');
+  var $newStr = '';
+
+  if (initStr.length >= 2) {
+    $newStr = initStr.substr(0, $splitStr.length - 1) + '$';
+    document.querySelector('.js-initial-string').innerHTML = $newStr.replace(initStr.charAt(0), '$');
+  }
+
+  return false;
+}
+</script>
+</body>
+</html>
