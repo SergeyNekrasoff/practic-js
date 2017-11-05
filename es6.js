@@ -99,3 +99,16 @@ child.log();
 
 // "Hello, World from logger!"
 // "Hello, World from child!"
+
+
+// Функции высшего подрядка
+// es5
+
+function bestSellingAlbum(x) {
+   return albumList.filter(
+     function (album) { return album.sales >= x; }
+   );
+ }
+
+ // es6
+ const bestSellingAlbums = (x) => albumList.filter(album => album.sales >= x);

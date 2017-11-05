@@ -1,3 +1,5 @@
+// Guides & Tutorials
+// =============================
 // Create namespace of variables
 var MYAPP = MYAPP || {};
 
