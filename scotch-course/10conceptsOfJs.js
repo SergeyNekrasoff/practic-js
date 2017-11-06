@@ -289,3 +289,102 @@ $.subscribe('recordsShow', function() {
 $.subscribe('recordsDisplayed, function() {
     ...
 });
+
+
+// =============================
+// Callbacks, Promises, and Sync
+// =============================
+
+// Asynchronous Operations
+
+// ========
+// Callback functions
+setInterval(function() {
+  console.log('hello');
+}, 3000);
+
+// Anonymous Callback
+function greeting(name) {
+  console.log(`Hello ${name}`);
+}
+
+// Naming Callback
+function introduction(firstName, lastName, callback) {
+  var fullName = `${firstName} ${lastName}`;
+
+  callback(fullName);
+}
+
+introduction('Bob', 'Dylan', greeting); // Hello Bob Dylan
+
+// ========
+// Promises
+
+// old
+date
+  .then(function(done) {
+    // the content from the resolve() is here
+  })
+  .catch(function(error) {
+    // the info from the reject() is here
+  });
+
+const myDate = function() {
+  date
+    .then(function(done) {
+      console.log('We are going on a date');
+      console.log(done);
+    })
+    .catch(function(error) {
+      console.log(error.message);
+    });
+}
+myDate();
+
+// new by using Promises
+const orderUber = function(dateDetails) {
+  const message = `Get me an Uber ASAP to ${dateDetails.location}, we are going on a date`;
+  return Promise.resolve(message);
+}
+
+const myDate = function() {
+  date
+    .then(orderUber)
+    .then(function(done) {
+      console.log(done);
+    })
+    .catch(function(error) {
+      console.log(error.message);
+    })
+}
+
+myDate();
+
+// Async
+function foo() {
+  return Promise.reject(25);
+}
+// is equal
+async function() {
+  throw 25;
+}
+
+// Await
+async function myDate() {
+  try {
+    let dateDetails = await date;
+    let message = await orderUber(dateDetails);
+    console.log(message);
+  } catch {
+    console.log(error.message);
+  }
+}
+
+(async() => {
+  await myDate();
+})();
+
+
+// =============================
+// ES6 Roundup Features
+// =============================
