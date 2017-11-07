@@ -388,3 +388,78 @@ async function myDate() {
 // =============================
 // ES6 Roundup Features
 // =============================
+
+// ========
+// Arrow String
+// ES5
+var stringLowerCase = function() {
+  var this    = this
+  this.string = this.string.toLowerCase();
+
+  return function() {
+    console.log(this.string);
+  }
+};
+stringLowerCase.call({
+  string: 'Java Script'
+})();
+
+// ES6
+var stringLowerCase = () => {
+  this.string = this.string.toLowerCase();
+  return () => console.log(this.string);
+}
+stringLowerCase.call({
+  string: 'Java Script'
+})();
+
+// Explicit (for more than one lines code)
+let sayHello = () => {
+  return 'explicit';
+}
+
+// Implicit
+lat sayHello = () => {
+  console.log('implicit');
+}
+
+// ========
+// Default Parameters
+// ES5
+var garage = function(model, year) {
+  var model = model || 'BMW';
+  var year = year || '2002';
+}
+
+// ES6
+var garage = function(model = 'BMW', year = '2002') {}
+
+// =======
+// Classes
+class carGarage {
+  constructor(price = {}, mileage = []) {
+    this.car = 'Ford',
+    this.model = 'Mustang',
+    this.color = 'blue',
+    this.price = price;
+    this.mileage = mileage;
+  }
+
+  getCarModel() {
+    console.log(`Car model: ${this.model}`);
+  }
+}
+
+// Extends Class
+class carDealerShop extends carGarage {
+  constructor(price, mileage) {
+    super([15000, 50000]);
+    this.name = 'Ford Mustang';
+    this.year = 2012;
+  }
+}
+
+let carSale = new CarDealerShip();
+
+carSale.getCarModel();                          // Car model: Mustanf
+console.log(`Data is ${price} and ${mileage}`); // Data is 15000 and 50000
