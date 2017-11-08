@@ -37,3 +37,58 @@ class FatFreeFood extends Food {
 
 const fat_free_food = new FatFreeFood('Yogurt', 16, 12);
 fat_free_food.print();
+
+
+// Prototypes: A Deep Dive
+// ==================
+
+// Creating Objects with Constructor Calls
+functino Food(name, protein, crabs) {
+  var obj = {};
+
+  Object.setPrototypeOf(obj, Food.prototype);
+
+  obj.name = name;
+  obj.protein = protein;
+  obj.crabs = crabs;
+
+  return obj;
+}
+
+var fatFood = Food('Pizza', 300, 0);
+console.log(Food.protein); // 300
+
+// Emulating 'class' Behavior
+function Food (name, protein, carbs, fat) {
+  this.name = name;
+  this.protein = protein;
+  this.carbs = carbs;
+  this.fat = fat;
+}
+
+Food.prototype.toString = function() {
+  return `${this.name} | ${this.protein}g P :: ${this.carbs}g C :: ${this.fat}g F`;
+}
+
+function FatFreefood (name, protein, carbs) {
+  Food.call(this, name, protein, carbs, 0);
+}
+
+// LINE A: Using Object.create to manually set FatFreeFood`s parent
+FatFreeFood.prototype = Object.createClass(Food.prototype);
+
+// LINE B: Manually (re)setting constructor reference (!)
+Object.defineProperty(FatFreeFood.constructor, 'constructor', {
+  enumerable: false,
+  writeable: true,
+  value: FatFreeFood
+});
+
+// Static Methods
+class Food {
+  static describe() {
+    console.log('"Food" is a data type for storing macronutrient information.');
+  }
+}
+
+Food.describe();
