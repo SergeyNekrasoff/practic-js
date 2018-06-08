@@ -133,35 +133,6 @@ function showOddElems(str) {
 
 console.log(showOddElems(str));
 
-
-// ============================
-// Deploy array
-var arrays = [[1, 2, 3],[4, 5],[6, 7]];
-
-console.log(arrays.reduce(function(flat, current) {
-  return flat.concat(current);
-}, []));
-
-Deploy array - universal method
-var arr = [[1, 2, [3, 4, [5, 5]]], [4, 5], [6]];
-
-function convertToSimpleArray(arrs) {
-  var res = [];
-
-  for (var i = 0; i < arrs.length; i++) {
-
-    if (!Array.isArray(arrs[i])) {
-      res.push(arrs[i]);
-    } else {
-      res = res.concat(convertToSimpleArray(arrs[i]));
-    }
-  }
-
-  return res;
-}
-
-console.log(convertToSimpleArray(arr));
-
 // ============================
 console.log('10 task');
 
@@ -266,7 +237,7 @@ function findNumber(str) {
 
 console.log(findNumber(str));
 
-// ?? ============================
+// ============================
 console.log('17 task');
 
 var str = 'sssssxsssxsssxssssxabc';
