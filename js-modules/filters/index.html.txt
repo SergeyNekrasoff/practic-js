@@ -1,0 +1,23 @@
+.wrap-checkbox
+          label.checkbox-label.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="fl-price-1")
+            input.mdl-checkbox__input.js-filter-input(type="checkbox" id="fl-price-1" name="fl-price-1" value="price-1")
+            span.mdl-checkbox__label On Sale
+        .wrap-checkbox.wrap-checkbox--border
+          label.checkbox-label.checkbox-label--border.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="fl-price-2")
+            input.mdl-checkbox__input.js-filter-input(type="checkbox" id="fl-price-2" name="fl-price-2" value="price-2")
+            span.mdl-checkbox__label New To Sale
+        .wrap-checkbox.wrap-checkbox--border
+          label.checkbox-label.checkbox-label--border.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="fl-price-3")
+            input.mdl-checkbox__input.js-filter-input(type="checkbox" id="fl-price-3" name="fl-price-3" value="price-3")
+            span.mdl-checkbox__label Coupon Code
+        .wrap-checkbox.wrap-checkbox--border
+          label.checkbox-label.checkbox-label--border.mdl-checkbox.mdl-js-checkbox.mdl-js-ripple-effect(for="fl-price-4")
+            input.mdl-checkbox__input.js-filter-input(type="checkbox" id="fl-price-4" name="fl-price-4" value="price-4")
+            span.mdl-checkbox__label Over 50% Off
+
+.js-container-items
+      .js-container-item(data-category="size-1 price-2")
+      .js-container-item(data-category="size-4 price-2")
+      .js-container-item(data-category="size-2 price-5")
+      .js-container-item(data-category="size-1 price-5")
+      .js-container-item(data-category="size-2 price-3")

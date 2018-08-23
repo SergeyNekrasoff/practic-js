@@ -1,0 +1,93 @@
+<form class="reimbursement-form-items ujs-reimbursement-form" id="reimbursement-form" method="post" enctype="multipart/form-data"
+              action="<?= $this->getUrl('customer/reimbursement/post') ?>">
+
+            <p class="sub-title">I am asking reimbursement for:</p>
+
+            <div class="asking-options">
+                <?php foreach ($reasons as $reason): ?>
+                    <p class="radio-line">
+                        <label class="mod-radio mod-inline" for="<?= $reason ?>">
+                            <input type="radio" name="reason" id="<?= $reason ?>" value="<?= $reason ?>" <?php if ($reason === $data->getReason()): ?>checked<?php endif ?>/>
+                            <span class="mod-radio-container"><?= $reason ?></span>
+                        </label>
+                    </p>
+                <?php endforeach ?>
+            </div>
+
+            <p class="sub-title">My Contact Information</p>
+
+            <div class="inputs-line">
+                <label class="mod-input mod-dark-purple contact-field flag-important">
+                    <input class="mod-field required js-input-form" name="firstname" title="Field 'First Name' can not be empty"
+                           placeholder="First Name *" value="<?= $this->escapeHtml($data->getFirstName()) ?>">
+                    <span class="error-text" data-error="firstname"></span>
+                    <span class="mod-placeholder">First Name *</span>
+                    <span class="clear-button ojs-form-input-clear"></span>
+                </label>
+            </div>
+
+            <div class="inputs-line">
+                <label class="mod-input mod-dark-purple contact-field flag-important">
+                    <input class="mod-field required js-input-form" name="lastname" title="Field 'Last Name' can not be empty"
+                           placeholder="Last Name *" value="<?= $this->escapeHtml($data->getLastName()) ?>">
+                    <span class="error-text" data-error="lastname"></span>
+                    <span class="mod-placeholder">Last Name *</span>
+                    <span class="clear-button ojs-form-input-clear"></span>
+                </label>
+            </div>
+
+            <div class="inputs-line">
+                <label class="mod-input mod-dark-purple contact-field flag-important">
+                    <input class="mod-field required js-input-form" name="email" title="Field 'Email' can not be empty"
+                           placeholder="Email *" value="<?= $this->escapeHtml($data->getEmail()) ?>">
+                    <span class="error-text" data-error="email"></span>
+                    <span class="mod-placeholder">Email *</span>
+                    <span class="clear-button ojs-form-input-clear"></span>
+                </label>
+            </div>
+
+            <div class="inputs-line">
+                <label class="mod-input mod-dark-purple contact-field flag-important">
+                    <input class="mod-field required js-input-form" name="phone" title="Field 'Phone' can not be empty"
+                           placeholder="Phone *" value="<?= $this->escapeHtml($data->getPhone()) ?>">
+                    <span class="error-text" data-error="phone"></span>
+                    <span class="mod-placeholder">Phone *</span>
+                    <span class="clear-button ojs-form-input-clear"></span>
+                </label>
+            </div>
+
+            <div class="textarea-line">
+                <label class="mod-input mod-dark-purple contact-field flag-important">
+                    <textarea placeholder="Comment" name="comment" class="mod-field"><?= $this->escapeHtml($data->getComment()) ?></textarea>
+                    <span class="mod-placeholder">Comment</span>
+                </label>
+            </div>
+
+            <div class="uploader-box ujs-uploader-box">
+                <p class="ub-info">*Please upload your invoice (Make sure it includes date and your name)</p>
+
+                <div class="mod-input mod-dark-purple contact-field">
+                    <label class="mod-field mod-field_overflow js-input-form">
+                        <input class="ub-input required js-input-form js-file-form" type="file" name="invoice" id="invoice"
+                               accept=".pdf, .doc, .docx, .jpeg, .jpg, .gif, .bmp"/>
+
+                        <span class="fake-placeholder ujs-fake-placeholder"></span>
+                    </label>
+                </div>
+                <label for="invoice" class="ub-button">
+                    <span class="ub-caption">Upload File</span>
+                </label>
+
+                <p class="ub-requirement">PDF, DOC, DOCX, JPEG, GIF, BMP formats only.<br>Maximum file size of 5MB.</p>
+            </div>
+
+            <div class="action-toolbar">
+                <input type="submit" class="btn btn-dark-purple submit js-submit-form" value="Submit">
+                <p class="reimbursement-form-note ujs-form-note">Please send your invoice and we will contact you within 48 hours.<br>
+                    Once your request is approved, you will get your money back within 30 days.</p>
+            </div>
+
+            <div class="block-messages ujs-block-message"></div>
+
+            <p class="reimbursement-form-phone">If you have any questions, you can reach us at <a href="tel:<?= $this->helper('optimaxuvp')->getPhoneForLink($storePhone) ?>"><?= $storePhone ?></a></p>
+        </form>

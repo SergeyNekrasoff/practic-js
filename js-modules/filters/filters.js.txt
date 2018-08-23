@@ -1,0 +1,26 @@
+$(() => {
+
+   var $checks = $('.js-filter-input').on('change', function() {
+      var $checked = $checks.filter(':checked');
+      var $items = $('.js-container-item');
+
+      var checkedVals = $.map($checked, function(el) {
+          return el.value
+      });
+
+      $items.hide();
+
+      if ($checked.length) {
+        $items.hide().filter(function() {
+            var cats = $(this).data('category').split(' ');
+            var checkMatches = $.grep(checkedVals, function(val) {
+                return $.inArray(val, cats) > -1;
+            });
+            return checkMatches.length === checkedVals.length;
+         /* show resultas that match all checkboxes */
+        }).show();
+      } else {
+        $items.show();
+      }
+    });
+});

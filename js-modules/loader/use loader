@@ -1,0 +1,4 @@
+_sendAjax(data) {
+            window.Loader.show();
+	// do..
+	    window.Loader.hide();

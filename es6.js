@@ -112,3 +112,15 @@ function bestSellingAlbum(x) {
 
  // es6
  const bestSellingAlbums = (x) => albumList.filter(album => album.sales >= x);
+
+
+// Как правильно писать методы в классах ES6
+class Name {
+    method() {
+        getContacts(this._handleResponse, this);
+    }
+
+    _handleResponse() {
+        this.contacts = res.data.contacts;
+    }
+}
